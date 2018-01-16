@@ -1,5 +1,5 @@
 
-# More Recipes
+# Blog Post
 
 
 ## Application Features
