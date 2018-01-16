@@ -1,0 +1,20 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.jumbotron {
+  background: url(../img/blog.jpg) no-repeat 0 -250px;
+  color: white;
+  border-radius: 0 !important;
+}
+
+.jumbotron > div {
+  max-width: 900px;
+}
