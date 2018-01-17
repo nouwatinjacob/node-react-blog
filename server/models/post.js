@@ -1,15 +1,28 @@
-'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  var Post = sequelize.define('Post', {
-    title: DataTypes.STRING,
-    post_body: DataTypes.STRING,
-    image: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+  const Post = sequelize.define('Post', {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    post_body: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false
+  } 
   });
+
+  Post.associate = (models) => {
+    Post.hasMany(models.Review, {
+      foreignKey: 'review_id'
+    });
+    Post.belongsTo(models.User, {
+      foreignKey: 'user_id'
+    })    
+  };
+
   return Post;
 };
