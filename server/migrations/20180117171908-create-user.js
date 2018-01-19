@@ -9,27 +9,27 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       first_name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       last_name: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       username: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       email: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       password: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       avatar: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: true,
     },
       createdAt: {
