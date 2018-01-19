@@ -9,11 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       review_body: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
       },
       user_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
       createdAt: {
