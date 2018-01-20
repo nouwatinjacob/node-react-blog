@@ -1,4 +1,6 @@
-import usersController from '../controllers';
+import { usersController, postsController, reviewsController } from '../controllers';
+
+import authMiddleware from '../middleware/auth';
 
 const routes = (router) => {
   router.route('/')
@@ -11,6 +13,15 @@ const routes = (router) => {
 
   router.route('/signin')
     .post(usersController.login);
+
+  router.route('/blog-post')
+    .post(authMiddleware.verifyToken, postsController.create);
+
+  router.route('/blog-posts')
+    .get(authMiddleware.verifyToken, postsController.list);
+
+  router.route('/blog-post/:post_id/review')
+    .post(authMiddleware.verifyToken, reviewsController.create);   
 
   };
 
