@@ -1,33 +1,31 @@
-const express = require('express');
-const logger = require('morgan');
-const bodyParser = require('body-parser');
+import http from 'http';
+import express from 'express';
+import logger from 'morgan';
+import parser from 'body-parser';
+import routes from './server/routes/index';
 
-const http = require('http');
+const dotenv = require('dotenv');
 
+dotenv.config();
 
-
-
-// Set up the express app
 const app = express();
-
+const router = express.Router();
 const port = parseInt(process.env.PORT, 10) || 8000;
 
-// Log requests to the console.
-app.use(logger('dev'));
-
-// Parse incoming requests data (https://github.com/expressjs/body-parser)
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+routes(router);
 
 app.set('port', port);
 
-const server = http.createServer(app);
-server.listen(port);
+app.use(logger('dev'));
+app.use(parser.json());
+app.use(parser.urlencoded({extended: false}));
 
-// Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to the beginning of nothingness.',
+app.use('/api/', router);
+
+app.get('*', (req, res) => res.status(404).json({
+  message: 'Invalid Url'
 }));
 
+app.listen(port, () => console.log(`Port running at ${port}`));
 
-module.exports = app;
+export default app;
