@@ -1,5 +1,6 @@
-const express = require('express');
-const logger = require('morgan');
+import http from 'http';
+import express from 'express';
+import logger from 'morgan';
 import parser from 'body-parser';
 import routes from './server/routes/index';
 
