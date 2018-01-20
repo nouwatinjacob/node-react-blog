@@ -7,7 +7,7 @@ import db from '../models';
 
 const User = db.User;
 
-const secret = 'tokensecret';
+const secret = process.env.SECRET_TOKEN;
 
 const userRegRule = {
   first_name: 'required|min:3',
@@ -71,16 +71,16 @@ const usersController = {
    */
 
    login(req, res) {
-    const body = _.pick(req.body, ['email', 'password']);
+    const body = req.body;
+    console.log(body);
     const validator =  new Validator(body, loginRule);
     if(validator.fails()) {
       return res.status(400).json({ code:400, message: validator.errors.all() });
     }
-    User.findOne({
+    return User.findOne({
       where: { email: body.email }
     })
     .then((user) => {
-      console.log('userhhjhjjkj');
       if(!user) {
         return res.status(400).json({ code: 400, message: 'User not found, please register' })
       }
