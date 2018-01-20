@@ -20,6 +20,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
     },
+    views: {
+      type: Sequelize.INTEGER,
+      allowNull: true
+  },
+    user_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+  },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
