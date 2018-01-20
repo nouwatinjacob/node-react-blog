@@ -17,10 +17,12 @@ module.exports = (sequelize, DataTypes) => {
 
   Post.associate = (models) => {
     Post.hasMany(models.Review, {
-      foreignKey: 'review_id'
+      foreignKey: 'review_id',
+      as: 'reviews'
     });
     Post.belongsTo(models.User, {
-      foreignKey: 'user_id'
+      foreignKey: 'user_id',
+      as: 'users'
     })    
   };
 
