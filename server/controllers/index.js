@@ -1,3 +1,9 @@
 import usersController from './users';
+import postsController from './posts';
+import reviewsController from './reviews';
 
-export default usersController;
+export { 
+  usersController, 
+  postsController,
+  reviewsController
+};
