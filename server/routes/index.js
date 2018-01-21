@@ -20,8 +20,20 @@ const routes = (router) => {
   router.route('/blog-posts')
     .get(authMiddleware.verifyToken, postsController.list);
 
-  router.route('/blog-post/:post_id/review')
-    .post(authMiddleware.verifyToken, reviewsController.create);   
+  router.route('/blog-post/:postId')
+    .get(authMiddleware.verifyToken, postsController.retrieve);
+
+  router.route('/blog-post/:postId')
+    .put(authMiddleware.verifyToken, postsController.update);
+
+  router.route('/blog-post/:postId')
+    .delete(authMiddleware.verifyToken, postsController.destroy);
+
+  router.route('/blog-post/:postId/review')
+    .post(authMiddleware.verifyToken, reviewsController.create); 
+  
+  router.route('/blog-post/:postId/views')
+    .get(authMiddleware.verifyToken, postsController.getPostView);
 
   };
 
