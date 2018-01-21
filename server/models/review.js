@@ -15,5 +15,16 @@ module.exports = (sequelize, DataTypes) => {
   } 
   });
 
+  Review.associate = (models) => {
+    Review.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE'
+    });
+    Review.belongsTo(models.Post, {
+      foreignKey: 'post_id',
+      onDelete: 'CASCADE'
+    });
+  };
+
   return Review;
 };
