@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Review, {
       foreignKey: 'user_id',
       as: 'reviews'
-    })      
+    });
   };
 
   User.prototype.comparePassword = (user, password) => {

@@ -1,4 +1,4 @@
-import { usersController, postsController, reviewsController } from '../controllers';
+import { usersController, postsController, reviewsController, replyController } from '../controllers';
 
 import authMiddleware from '../middleware/auth';
 
@@ -20,8 +20,26 @@ const routes = (router) => {
   router.route('/blog-posts')
     .get(authMiddleware.verifyToken, postsController.list);
 
-  router.route('/blog-post/:post_id/review')
-    .post(authMiddleware.verifyToken, reviewsController.create);   
+  router.route('/blog-post/:postId')
+    .get(authMiddleware.verifyToken, postsController.retrieve);
+
+  router.route('/blog-post/:postId')
+    .put(authMiddleware.verifyToken, postsController.update);
+
+  router.route('/blog-post/:postId')
+    .delete(authMiddleware.verifyToken, postsController.destroy);
+
+  router.route('/blog-post/:postId/review')
+    .post(authMiddleware.verifyToken, reviewsController.create);
+  
+  router.route('/:reviewId/reply')
+    .post(authMiddleware.verifyToken, replyController.create);
+
+  router.route('/replies')
+    .get(authMiddleware.verifyToken, replyController.getAllReply);
+  
+  router.route('/blog-post/:postId/views')
+    .get(authMiddleware.verifyToken, postsController.getPostView);
 
   };
 

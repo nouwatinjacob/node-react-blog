@@ -1,35 +1,38 @@
 
 module.exports = (sequelize, DataTypes) => {
-  const Review = sequelize.define('Review', {
-    review_body: {
+  const Reply = sequelize.define('Reply', {
+    reply_body: {
       type: DataTypes.STRING,
       allowNull: false
     },
     post_id: {
       type: DataTypes.INTEGER,
       allowNull: false
-  },
+    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false
-  } 
+    },
+    review_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
   });
 
-  Review.associate = (models) => {
-    Review.belongsTo(models.User, {
+  Reply.associate = (models) => {
+    Reply.belongsTo(models.User, {
       foreignKey: 'user_id',
       onDelete: 'CASCADE'
     });
-    Review.belongsTo(models.Post, {
+    Reply.belongsTo(models.Post, {
       foreignKey: 'post_id',
       onDelete: 'CASCADE'
     });
-
-    Review.hasMany(models.Reply, {
-      foreignKey: 'post_id',
-      as: 'replies'
+    Reply.belongsTo(models.Review, {
+      foreignKey: 'review_id',
+      onDelete: 'CASCADE'
     });
   };
-
-  return Review;
+  
+  return Reply;
 };

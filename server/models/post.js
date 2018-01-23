@@ -12,18 +12,28 @@ module.exports = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING,
       allowNull: false
-  } 
+  },
+  views: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+},
+user_id: {
+  type: DataTypes.INTEGER,
+  allowNull: false
+}
   });
 
   Post.associate = (models) => {
-    Post.hasMany(models.Review, {
-      foreignKey: 'review_id',
-      as: 'reviews'
-    });
     Post.belongsTo(models.User, {
       foreignKey: 'user_id',
-      as: 'users'
-    })    
+      onDelete: 'CASCADE'
+    });
+
+    Post.hasMany(models.Review, {
+      foreignKey: 'post_id',
+      as: 'reviews'
+    });
+        
   };
 
   return Post;

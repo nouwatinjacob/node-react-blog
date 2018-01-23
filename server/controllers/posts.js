@@ -46,6 +46,7 @@ const postsController = {
     })
     .catch(error => res.status(500).json(error));
   },
+  
   /**
    * List all Blog Post
    * 
@@ -55,10 +56,12 @@ const postsController = {
    */
 
   list(req, res) {
-    return Post.findAll({
-      include: [{ model: Review }]
+    return Post.findAll({ 
+      page: req.query.page, 
+      limit: req.query.limit,
+      offset: 0
     })
-      .then((posts) => { 
+      .then((posts) => {       
         return res.status(200).json({code: 200, message:'All Blog Post', data: posts})
       })
       .catch(error => res.status(500).json(error));
@@ -72,29 +75,78 @@ const postsController = {
    * @returns 
    */
 
-  //  retrieve(req, res) {
-  //    Post.findById(req.params.postId, {
-  //     include: [{
-  //       model: Review,
-  //       as: 'reviews'
-  //     }]
-  //   })
-  //    .then((post) => {
-  //      console.log(req.params.postId);
-  //     if(!post) {
-  //       return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'}); 
-  //     }
-  //     return post.update({ views: post.views + 1 });
-  //    })
-  //    .then((post) => {
-  //      if(!post) {
-  //       return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
-  //      }
-  //      if (req.decoded && req.decoded.id && req.decoded.id === post.user_id) recipe.views = 1;
-  //       res.status(200).json({ recipe });
-  //    })
-  //    .catch(error => res.status(500).json(error));
-  //  }
+   retrieve(req, res) {
+     Post.findById(req.params.postId, {
+      include: [{
+        model: Review,
+        as: 'reviews'
+      }]
+     })
+     .then((post) => {
+      if(!post) {
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'}); 
+      }      
+      return post.update({ views: post.views + 1 });
+     })
+     .then((post) => {
+       if(!post) {
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
+       }
+       if (req.decoded && req.decoded.id && req.decoded.id === post.user_id)
+        res.status(200).json({code: 200, message: 'A Blog Post with its Reviews', post });
+     })
+     .catch(error => res.status(400).json(error));
+   },
+
+   update(req, res) {
+    const body = req.body;
+    const validator = new Validator(body, postRule);
+    if(validator.fails()) {
+      return res.status(400).json({ code:400, message: validator.errors.all() });
+    } 
+     Post.findById(req.params.postId)
+     .then((post) => {
+      if(!post) {
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
+      }
+      return Post.update({
+        title: body.title || post.title,
+        post_body: body.post_body || post.post_body,
+        image: body.image || post.image
+      })
+      .then((updatedPost) => {
+        res.status(200).json({ message: 'Blog Post succesfully updated', updatedPost});
+      })
+      .catch(error => res.status(400).json(error));
+     })
+     .catch(error => res.status(400).json(error));
+   },
+
+   destroy(req, res) {
+     Post.findById(req.params.postId)
+     .then((post) => {
+      if(!post) {
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
+      }
+      return post.destroy()
+      .then(() => res.status(200).json({code: 200, message: 'Blog Post Deleted'}))
+      .catch(error => res.status(400).json(error));
+     })
+     .catch(error => res.status(400).json(error));
+   },
+
+   getPostView(req, res) {
+     Post.findById(req.params.postId)
+     .then((post) => {
+      if(!post) {
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
+      }
+      if (req.decoded && req.decoded.id && req.decoded.id === post.user_id)
+        post = post.views;
+        res.status(200).json({code: 200, message: 'Total number of views for this Blog Post', views: post });
+     })
+     .catch(error => res.status(400).json(error));
+   }
 
 };
 

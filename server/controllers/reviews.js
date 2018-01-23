@@ -15,14 +15,14 @@ const reviewsController = {
     if(validator.fails()) {
       return res.status(400).json({ code:400, message: validator.errors.all() });
     }
-    Post.findById(req.params.post_id)
+    Post.findById(req.params.postId)
     .then((post) => {
       if(!post) {
         return res.status(404).json({ code:404, message: 'Blog Post not found'});
       }
       return Review.create({
         review_body : req.body.review_body,
-        post_id: req.params.post_id,
+        post_id: req.params.postId,
         user_id: req.decoded.id
       })
       .then((savedReview) => {
