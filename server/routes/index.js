@@ -34,6 +34,9 @@ const routes = (router) => {
   
   router.route('/:reviewId/reply')
     .post(authMiddleware.verifyToken, replyController.create);
+
+  router.route('/replies')
+    .get(authMiddleware.verifyToken, replyController.getAllReply);
   
   router.route('/blog-post/:postId/views')
     .get(authMiddleware.verifyToken, postsController.getPostView);

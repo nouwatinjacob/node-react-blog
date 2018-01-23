@@ -56,7 +56,11 @@ const postsController = {
    */
 
   list(req, res) {
-    return Post.findAll()
+    return Post.findAll({ 
+      page: req.query.page, 
+      limit: req.query.limit,
+      offset: 0
+    })
       .then((posts) => {       
         return res.status(200).json({code: 200, message:'All Blog Post', data: posts})
       })
