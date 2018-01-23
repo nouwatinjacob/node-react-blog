@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "nodemon app --exec babel-node",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sequelize db:migrate:undo:all && sequelize db:migrate && nyc --reporter=html mocha server/tests/*.test.js --compilers js:babel-register && nyc report",
+    "start-dev": "nodemon app --exec babel-node"
   },
   "keywords": [],
   "author": "",
