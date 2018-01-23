@@ -24,6 +24,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'post_id',
       onDelete: 'CASCADE'
     });
+
+    Review.hasMany(models.Reply, {
+      foreignKey: 'post_id',
+      as: 'replies'
+    });
   };
 
   return Review;
