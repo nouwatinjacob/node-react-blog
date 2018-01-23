@@ -35,6 +35,18 @@ const replyController = {
     .catch(error => res.status(400).json(error));
   },
   
+  getAllReply(req, res) {
+    return Reply.findAll({ 
+      page: req.query.page, 
+      limit: req.query.limit,
+      offset: 0,
+      where : { review_id: 3 } 
+    })
+      .then((replies) => {       
+        return res.status(200).json({code: 200, message:"All Review's reply", data: replies})
+      })
+      .catch(error => res.status(500).json(error));
+  }
 
 };
 
