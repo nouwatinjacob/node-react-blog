@@ -40,7 +40,7 @@ const replyController = {
       page: req.query.page, 
       limit: req.query.limit,
       offset: 0,
-      where : { review_id: 3 } 
+      where : { review_id: 1 } 
     })
       .then((replies) => {       
         return res.status(200).json({code: 200, message:"All Review's reply", data: replies})
