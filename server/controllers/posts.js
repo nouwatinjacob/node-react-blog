@@ -93,7 +93,7 @@ const postsController = {
         return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
        }
        if (req.decoded && req.decoded.id && req.decoded.id === post.user_id)
-        res.status(200).json({code: 200, message: 'A Blog Post with its Reviews', post });
+        res.status(200).json({code: 200, message: 'A Blog Post with its Reviews', data: post });
      })
      .catch(error => res.status(400).json(error));
    },
@@ -141,9 +141,8 @@ const postsController = {
       if(!post) {
         return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
       }
-      if (req.decoded && req.decoded.id && req.decoded.id === post.user_id)
-        post = post.views;
-        res.status(200).json({code: 200, message: 'Total number of views for this Blog Post', views: post });
+      post = post.views;
+      res.status(200).json({code: 200, message: 'Total number of views for this Blog Post', views: post });
      })
      .catch(error => res.status(400).json(error));
    }
