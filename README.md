@@ -38,7 +38,7 @@ This is an application where a anyone can see read a blog post posted by a regis
 - Install all depencies with ```npm install```
 - Globally install ```sequelize-cli```
 - Using ```sequelize db:migrate``` migrate the database
-- Start the application by running ```npm start```
+- Start the application by running ```npm run start-dev```
 
 ## Project Limitation
 - An unregistered user can not modify or delete a blog post
@@ -46,6 +46,6 @@ This is an application where a anyone can see read a blog post posted by a regis
 - An unregistered user can not like or unlike a blog post
 
 ## User template is available on
-- [MoreRecipes](https://codestaintin.github.io/more_recipes_ui)
+- [BlogMe](https://codestaintin.github.io/more_recipes_ui)
 
 ### Update comming soon
