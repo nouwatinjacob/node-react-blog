@@ -38,6 +38,12 @@ const usersController = {
       if(body.verify_password !== body.password) {
         return res.status(401).json({ code:401, message: 'Password does not match' });
       }
+      if(!isNaN(parseInt(body.first_name, 10))) {
+        return res.status(401).json({ code:401, message: 'The first name field must contain only alphabetic characters.' });
+      }
+      if(!isNaN(parseInt(body.last_name, 10))) {
+        return res.status(401).json({ code:401, message: 'The last name field must contain only alphabetic characters.' });
+      }
       User.findOne({
         where:{ username: body.username }               
       })
@@ -60,7 +66,7 @@ const usersController = {
       })
       .catch(error => res.status(500).json(error));
     }
-    else return res.status(400).json({ code:400, message: validator.errors.all() });
+    else return res.status(401).json({ code:401, message: validator.errors.all() });
   },
 /**
    * Log in user and validate user request
@@ -82,7 +88,10 @@ const usersController = {
     })
     .then((user) => {
       if(!user) {
-        return res.status(400).json({ code: 400, message: 'User not found, please register' })
+        return res.status(404).json({ code: 404, message: 'User not found, please register' })
+      }
+      if (!user.comparePassword(user, body.password)) {
+        return res.status(400).json({ message: 'Password does not match the one in record' });
       }
       const data = _.pick(user, ['id', 'first_name', 'last_name', 'email', 'username', 'avatar' ]);
       const myToken = jwt.sign(data, secret, { expiresIn: 24 * 60 * 60 });
