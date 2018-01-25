@@ -31,11 +31,14 @@ const routes = (router) => {
 
   router.route('/blog-post/:postId/review')
     .post(authMiddleware.verifyToken, reviewsController.create);
+
+  router.route('/blog-post/:postId/review')
+    .get(authMiddleware.verifyToken, reviewsController.getAllReviews);
   
   router.route('/:reviewId/reply')
     .post(authMiddleware.verifyToken, replyController.create);
 
-  router.route('/replies')
+  router.route('/blog-post/:postId/replies')
     .get(authMiddleware.verifyToken, replyController.getAllReply);
   
   router.route('/blog-post/:postId/views')
