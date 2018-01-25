@@ -31,7 +31,24 @@ const reviewsController = {
       .catch(error => res.status(500).json(error));
     })
     .catch(error => res.status(500).json(error));
-  }
+  },
+
+  getAllReviews(req, res) {
+    Post.findById(req.params.postId)
+    .then((post) => {
+      Review.findAll({ 
+        page: req.query.page, 
+        limit: req.query.limit,
+        offset: 0,
+        where: { post_id: post.id } 
+      })
+      .then((reviews) =>{
+        return res.status(200).json({code: 200, message:"A Blog Post's Review List", data: reviews})
+      })
+      .catch(error => res.status(500).json(error));
+    })
+    .catch(error => res.status(500).json(error));
+  },
 
 };
 
