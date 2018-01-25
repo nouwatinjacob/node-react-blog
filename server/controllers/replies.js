@@ -36,16 +36,26 @@ const replyController = {
   },
   
   getAllReply(req, res) {
-    return Reply.findAll({ 
-      page: req.query.page, 
-      limit: req.query.limit,
-      offset: 0,
-      where : { review_id: 1 } 
-    })
-      .then((replies) => {       
-        return res.status(200).json({code: 200, message:"All Review's reply", data: replies})
+    Post.findById(req.params.postId)
+    .then((post) => {
+      Review.findOne({
+        where: { post_id: post.id}
+      })
+      .then((review) => {
+        return Reply.findAll({ 
+          page: req.query.page, 
+          limit: req.query.limit,
+          offset: 0,
+          where : { review_id: review.id } 
+        })
+          .then((replies) => {       
+            return res.status(200).json({code: 200, message:"All Replies of a Review", data: replies})
+          })
+          .catch(error => res.status(500).json(error));
       })
       .catch(error => res.status(500).json(error));
+    })
+    .catch(error => res.status(500).json(error));    
   }
 
 };
