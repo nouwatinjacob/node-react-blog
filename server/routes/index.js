@@ -14,7 +14,7 @@ const routes = (router) => {
   router.route('/signin')
     .post(usersController.login);
 
-  router.route('/blog-post')
+  router.route('/blog-posts')
     .post(authMiddleware.verifyToken, postsController.create);
 
   router.route('/blog-posts')
