@@ -1,4 +1,6 @@
 import Validator from 'validatorjs';
+const util = require('util');
+import check from 'validator';
 
 import db from '../models';
 
@@ -7,8 +9,8 @@ const Post = db.Post;
 const Review = db.Review;
 
 const postRule = {
-  title: 'required',
-  post_body: 'required',
+  title: 'required|min:3',
+  post_body: 'required|min:50',
   image: 'required',
 }
 
@@ -27,6 +29,12 @@ const postsController = {
     const validator = new Validator(body, postRule);
     if(validator.fails()) {
       return res.status(400).json({ code:400, message: validator.errors.all() });
+    }
+    if(check.isNumeric(body.title)) {
+      return res.status(400).json({ code:400, message: 'The title field must be a string.' });
+    }
+    if(check.isNumeric(body.post_body)) {
+      return res.status(400).json({ code:400, message: 'The post_body field must be a string.' });
     }
     User.findById(req.decoded.id)
     .then((user) => {
