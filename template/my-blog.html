@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Edit Profile</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">BlogMe</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Recent Posts</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Who We Are</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+          </li>  
+        </ul>        
+            
+        <div class="btn-group">
+            <a class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" href="#">
+              My Account
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="nav-link" href="#">Edit Profile</a></li>
+              <li><a class="nav-link" href="#">My Posts</a></li>
+              <li><a class="nav-link" href="#">Log out</a></li>              
+            </ul>
+          </div>
+        
+      </div>
+    </nav>
+
+    <main role="main" class=" mt-3">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-md-4 col-lg-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="text-center">
+                            <img src="img/user.jpg" alt="" srcset="" class="rounded-circle" width="80" height="80">
+                        </div>
+                          <div class="card-header mt-2">
+                              Featured
+                            </div>
+                            <div class="list-group" id="myList" role="tablist">
+                                <a class="list-group-item list-group-item-action" href="" >Edit Profile</a>
+                                <a class="list-group-item list-group-item-action" href="" >Add Post</a>
+                                <a class="list-group-item list-group-item-action" href="" >Remove Post</a>
+                                <a class="list-group-item list-group-item-action active" href="" >My Post</a>
+                              </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="col-md-8 col-lg-9 col-sm-6 mx-auto">
+                        <div class="table-responsive">
+                            <table class="table table-sm table-dark">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Begining of my Success Story</td>
+                                    <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</td>
+                                    <td>
+                                      <a href="" class="badge badge-info">Read</a>|
+                                      <a href="" class="badge badge-success">Update</a>|
+                                      <a href="" class="badge badge-danger">Delete</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                      <th scope="row">2</th>
+                                      <td>Begining of my Success Story</td>
+                                      <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</td>
+                                      <td>
+                                        <a href="" class="badge badge-info">Read</a>|
+                                        <a href="" class="badge badge-success">Update</a>|
+                                        <a href="" class="badge badge-danger">Delete</a>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Begining of my Success Story</td>
+                                        <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</td>
+                                        <td>
+                                          <a href="" class="badge badge-info">Read</a>|
+                                          <a href="" class="badge badge-success">Update</a>|
+                                          <a href="" class="badge badge-danger">Delete</a>
+                                        </td>
+                                      </tr>
+                                      
+                                      <tr>
+                                          <th scope="row">4</th>
+                                          <td>Begining of my Success Story</td>
+                                          <td>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</td>
+                                          <td>
+                                            <a href="" class="badge badge-info">Read</a>|
+                                            <a href="" class="badge badge-success">Update</a>|
+                                            <a href="" class="badge badge-danger">Delete</a>
+                                          </td>
+                                        </tr>
+                                  
+                                </tbody>
+                              </table>
+                        </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer class="container">
+        <hr>
+      <p>&copy; BlogMe 2017</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
