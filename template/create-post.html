@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Create Post</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">BlogMe</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Recent Posts</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Who We Are</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+          </li>  
+        </ul>        
+            
+        <div class="btn-group">
+            <a class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" href="#">
+              My Account
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="nav-link" href="#">Edit Profile</a></li>
+              <li><a class="nav-link" href="#">My Posts</a></li>
+              <li><a class="nav-link" href="#">Log out</a></li>              
+            </ul>
+          </div>
+        
+      </div>
+    </nav>
+
+    <main role="main" class=" mt-5">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                  <div class="card-body">
+                      <div class="card-header">
+                          Featured
+                        </div>
+                        <div class="list-group" id="myList" role="tablist">
+                            <a class="list-group-item list-group-item-action active" href="" >Edit Profile</a>
+                            <a class="list-group-item list-group-item-action" href="" >Add Post</a>
+                            <a class="list-group-item list-group-item-action" href="" >Remove Post</a>
+                            <a class="list-group-item list-group-item-action" href="" >My Post</a>
+                          </div>
+                  </div>
+                </div>
+              </div>
+
+          <div class="col-md-offset-1 col-md-6 post-form">
+            <div class="card text-center">
+              <div class="card-body">
+                <h5 class="card-title">Post on topics relating to Category you choose</h5>
+                <form class="form-horizontal mt-4" role="form">                    
+                  <div class="form-group">
+                    <div class="col-lg-12">
+                      <textarea rows="4" class="form-control" id="inputEmail1" placeholder="Type your Post"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-12">
+                      <select class="form-control" id="groups">
+                        <option>-Select Category to Post to-</option>
+                        <option>Andela</option>
+                        <option>Bootcamp 24</option>
+                        <option>Sport</option>
+                        <option>Entertainment</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-12">
+                      <button type="submit" class="btn btn-success btn-lg">Post Blog</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="clear-fix"></div> -->
+          <div class="col-md-3 trends">
+            <div class="card">
+              <div class="card-body">                  
+                <div class="list-group">
+                  <div class="card-header">Recent Posts</div>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">                                    
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small>3 days ago</small>
+                      </div>
+                      <small>Sansaristic</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                      </div>
+                      <small class="text-muted">sansaristic</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                      </div>
+                      <small class="text-muted">sansaristic</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">List group item heading</h5>
+                        <small class="text-muted">3 days ago</small>
+                      </div>
+                      <small class="text-muted">sansaristic</small>
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </main>
+
+    <footer class="container">
+        <hr>
+      <p>&copy; BlogMe 2017</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
