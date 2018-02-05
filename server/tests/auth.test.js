@@ -5,7 +5,9 @@ import { assert } from 'chai';
 import app from '../../app';
 import seed from './seeders/auth_seed';
 
-dotEnv.config();
+process.env.NODE_ENV = 'test';
+
+require('dotenv').config();
 
 describe('POST Test suites for User sign up', () => {
   before(seed.emptyUserTable);

@@ -14,7 +14,7 @@ const routes = (router) => {
   router.route('/signin')
     .post(usersController.login);
 
-  router.route('/blog-post')
+  router.route('/blog-posts')
     .post(authMiddleware.verifyToken, postsController.create);
 
   router.route('/blog-posts')
@@ -31,11 +31,14 @@ const routes = (router) => {
 
   router.route('/blog-post/:postId/review')
     .post(authMiddleware.verifyToken, reviewsController.create);
+
+  router.route('/blog-post/:postId/review')
+    .get(authMiddleware.verifyToken, reviewsController.getAllReviews);
   
   router.route('/:reviewId/reply')
     .post(authMiddleware.verifyToken, replyController.create);
 
-  router.route('/replies')
+  router.route('/blog-post/:postId/replies')
     .get(authMiddleware.verifyToken, replyController.getAllReply);
   
   router.route('/blog-post/:postId/views')

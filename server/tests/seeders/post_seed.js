@@ -8,7 +8,7 @@ const seeder = {
       .then(() => done())
       .catch(err => done(err));
   },
-  setInput(title, post_body, image, views) {
+  setInput(title, post_body, image, views, user_id) {
     return {
       title,
       post_body,
@@ -16,7 +16,7 @@ const seeder = {
       views
     };
   },
-  setUpdatePost(title, post_body, image, views) {
+  setUpdatePost(title, post_body, image, views, user_id) {
     return {
       title,
       post_body,
@@ -25,11 +25,12 @@ const seeder = {
     };
   },
   addPost(done) {
-    Recipe.create({
+    Post.create({
       title: 'Yam Porridge',
       post_body: 'This is just a test, so cool your tension down',
       image: 'yam.img',
-      views: 9
+      views: 9,
+      user_id: 1
     })
       .then(() => done())
       .catch(err => done(err));
