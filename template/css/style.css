@@ -9,6 +9,11 @@ body {
   flex-direction: column;
 }
 
+main{
+  width: 100%;  
+  padding: 0;
+}
+
 .jumbotron {
   background: url(../img/blog.jpg) no-repeat 0 -250px;
   color: white;
@@ -18,3 +23,93 @@ body {
 .jumbotron > div {
   max-width: 900px;
 }
+
+/* Profile page styles */
+.avatar {
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+}
+
+hr {
+  width: 80%;  
+}
+
+.center-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  /* align horizontal */
+  -webkit-align-items: center;
+  align-items: center;
+  /* align vertical */
+}
+
+/* Profile footer */
+.mt-footer {
+  margin-top: 150px !important;
+}
+
+/* All Posts */
+.row .posts{
+  padding: 5px;
+}
+
+.row .posts img{
+  width: 250px;
+  height: 150px;
+}
+
+/* Blog post */
+.blog-post img{
+  width: 600px;
+  height: 350px;
+}
+
+
+@media screen and (max-width: 425px) {
+  .avatar {
+    margin-left: 2px !important;
+  }
+
+  .personal-info {
+    margin-left: -5px !important;
+  }
+
+} 
+
+@media only screen and (max-width: 768px) {
+  .avatar label, input {
+    max-width: 200px;
+  }
+
+}
+
+@media only screen and (max-width: 425px) {
+  .trends, .post-form {
+    margin-top: 20px;
+  }
+
+} 
+
+@media screen and (min-width: 768px) {
+  .post-form, .trends {
+    margin-left: 0 ;
+  }
+
+} 
+
+@media screen and (max-width: 768px) {
+  .blog-post img {
+    height: 200px;
+  }
+}
+
+
+ @media only screen and (max-width: 425px){
+  .personal-info {
+    margin-top: 20px !important;
+  }
+} 
