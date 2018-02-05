@@ -39,7 +39,7 @@ const postsController = {
     User.findById(req.decoded.id)
     .then((user) => {
       if(!user) {
-        return res.status(404).json({code: 404, message: 'This User Does not exit'});
+        return res.status(404).json({code: 404, message: 'This User Does not exist'});
       }
       return Post.create({
         title: body.title,
@@ -92,13 +92,13 @@ const postsController = {
      })
      .then((post) => {
       if(!post) {
-        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'}); 
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exist'}); 
       }      
       return post.update({ views: post.views + 1 });
      })
      .then((post) => {
        if(!post) {
-        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exist'});
        }
        if (req.decoded && req.decoded.id && req.decoded.id === post.user_id)
         res.status(200).json({code: 200, message: 'A Blog Post with its Reviews', data: post });
@@ -115,7 +115,7 @@ const postsController = {
      Post.findById(req.params.postId)
      .then((post) => {
       if(!post) {
-        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exist'});
       }
       return Post.update({
         title: body.title || post.title,
@@ -134,7 +134,7 @@ const postsController = {
      Post.findById(req.params.postId)
      .then((post) => {
       if(!post) {
-        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exist'});
       }
       return post.destroy()
       .then(() => res.status(200).json({code: 200, message: 'Blog Post Deleted'}))
@@ -147,7 +147,7 @@ const postsController = {
      Post.findById(req.params.postId)
      .then((post) => {
       if(!post) {
-        return res.status(404).json({code: 404, message: 'This Blog Post Does not exit'});
+        return res.status(404).json({code: 404, message: 'This Blog Post Does not exist'});
       }
       post = post.views;
       res.status(200).json({code: 200, message: 'Total number of views for this Blog Post', views: post });
